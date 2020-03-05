@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+
+  <script type="module" src="/build/stencil-overlay-test.esm.js"></script>
+  <script nomodule src="/build/stencil-overlay-test.js"></script>
+
+</head>
+<body>
+  <button
+  id="button"
+  (click)="openModal = true"
+>Click Me</button>
+<aux-modal
+  #action
+  type="action"
+  header="Example Headline"
+  has-grey-content-area="true"
+  is-open="false"
+>
+  <div
+    slot="content"
+    class="aux-g32--cw-6 aux-layout__wrapper-32 content-padding"
+  >
+    <div
+      class="aux-g32--xs-12 aux-g32--sm-12 aux-g32--md-12 aux-g32--lg-12 aux-g32--xl-12"
+    >
+      Content, urgent information, details or action.<br />
+      Lorem ipsum dolor sit amet consectetur at elit nulla
+      sed accumsan eleifend. Etiam eu est ant ante porta
+      tempus aliquam at.
+    </div>
+  </div>
+  <aux-link
+    (click)="modalLinkClicked($event)"
+    slot="tertiary-link"
+    label="Lorem ipsum"
+  ></aux-link>
+
+  <button
+    slot="primary-button"
+    (click)="openModal = false"
+  >Submit</button>
+  <button
+    slot="secondary-button"
+    (click)="openModal = false"
+  >Cancel</button>
+</aux-modal>
+  <test-modal></test-modal>
+
+</body>
+<script>
+  var modalEl = document.querySelector('test-modal');
+  modalEl.addEventListener('modalOpened',modalOpened);
+  modalEl.addEventListener('modalClosed',modalClosed);
+  function modalOpened(){
+    console.log('im open');
+  }
+  function modalClosed(){
+    console.log('im closed');
+  }
+  var openModal = true;
+</script>
+</html>

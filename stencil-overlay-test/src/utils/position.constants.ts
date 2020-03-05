@@ -1,0 +1,26 @@
+export class AwPositionConstants {
+	public static readonly STRING = {
+		OVERLAY_SOURCE: 'aw-overlay__source',
+		OVERLAY_CONTAINER: 'aw-overlay__container',
+		DROPDOWN_CONTAINER: 'aw-overlay__dropdown-container',
+		MENU_CONTAINER: 'aw-overlay__menu-container',
+		POPOVER_CONTAINER: 'aw-overlay__popover-container',
+		MODAL_CONTAINER: 'aw-overlay__modal-container',
+		CALENDAR_CONTAINER: 'aw-calendar__container',
+		BACKDROP_CONTAINER: 'aw-overlay__backdrop-container',
+		BACKDROP_CENTER: 'aw-overlay__backdrop--center-position',
+		BACKDROP_SHOW: 'aw-overlay__backdrop--showing',
+		GRID_POPUP: 'ag-popup',
+		DIV: 'div',
+		BOTTOM_PADDING: 10,
+		HIDDEN: 'hidden',
+		TARGET_EVENT_TYPE: 'targetEventType',
+		PARENT_CLASS_NAME: 'parentElement.className',
+		PATH: 'path',
+		CLASSNAME: 'className',
+		STYLE: 'style',
+		VISIBLE: 'visible',
+		PARENT: 'parentElement',
+		NONE: 'none',
+	};
+}

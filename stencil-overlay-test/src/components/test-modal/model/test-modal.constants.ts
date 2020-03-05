@@ -1,0 +1,28 @@
+export class TestModalConstants {
+	public static readonly STRING = {
+		AW_MODAL: 'aw-modal',
+		CONTAINER: 'aw-modal__container',
+		CONTAINER_LARGE: 'aw-modal__container--large',
+		HEADER: 'aw-modal__header',
+		HEADER_LARGE: 'aw-modal__header--large',
+		WRAPPER: 'aw-modal__wrapper',
+		CONTENT: 'aw-modal__content',
+		CONTENT_LARGE: 'aw-modal__content--large',
+		CONTENT_GREY: 'aw-modal__content--grey',
+		CONTAINER_INFORMATION: 'aw-modal__container--information',
+		CONTAINER_ACTION: 'aw-modal__container--action',
+		BUTTONS: 'aw-modal__buttons',
+		PRIMARY_BUTTON_PADDING: 'aw-modal__primary-button--padding',
+		CONTENT_HIDE: 'aw-modal__content--hide',
+		CONTENT_SHOW: 'aw-modal__content--show',
+		FOOTER: 'aw-modal__footer',
+		LARGE_FOOTER: 'aw-modal__footer--large',
+		FOOTER_WITH_LINK: 'aw-modal__footer--with-link',
+		MOUSEDOWN: 'mousedown',
+		KEYDOWN: 'keydown',
+		PATH: 'path',
+		CLASSNAME: 'className',
+		ACTION: 'action',
+		INFORMATION: 'information',
+	};
+}
