@@ -1,5 +1,5 @@
 
-.aw-modal__wrapper {
+.test-modal__wrapper {
 	border-radius: 4px;
 	border: 1px solid blue;
 	border-top-width: 4px;
@@ -12,29 +12,29 @@
 	flex-direction: column;
 }
 
-.aw-modal__container {
+.test-modal__container {
 	display: flex;
 	flex-direction: column;
 	flex: 1 1 auto;
 	min-height: 0;
 }
 
-.aw-modal__container--large {
+.test-modal__container--large {
 	padding: 0;
 	max-height: 65vh;
 	overflow: hidden;
 }
 
-.aw-modal__container--information {
-	@extend .aw-modal__container;
+.test-modal__container--information {
+	@extend .test-modal__container;
 }
 
-.aw-modal__container--action {
-	@extend .aw-modal__container;
+.test-modal__container--action {
+	@extend .test-modal__container;
 	border-bottom: 1px solid grey;
 }
 
-.aw-modal__header {
+.test-modal__header {
 	padding: 20px 32px 19px;
 	border-bottom: 1px solid grey;
 	font-size: 20px;
@@ -45,7 +45,7 @@
 	justify-content: space-between;
 }
 
-.aw-modal__content {
+.test-modal__content {
 	font-size: 13px;
 	line-height: 20px;
 	color: black;
@@ -55,15 +55,15 @@
 	display: flex;
 }
 
-.aw-modal__content--large {
+.test-modal__content--large {
 	max-width: 90vw;
 	padding: 0;
 }
-.aw-modal__content--grey {
+.test-modal__content--grey {
 	background-color: grey;
 }
 
-.aw-modal__footer {
+.test-modal__footer {
 	display: flex;
 	flex-direction: row-reverse;
 	justify-content: flex-start;
@@ -73,19 +73,19 @@
 	align-items: center;
 }
 
-.aw-modal__footer--with-link {
+.test-modal__footer--with-link {
 	justify-content: space-between;
 }
 
-.aw-modal__buttons {
+.test-modal__buttons {
 	display: inline-flex;
 }
 
-.aw-modal__primary-button--padding {
+.test-modal__primary-button--padding {
 	padding-right: 16px;
 }
 
-.aw-modal {
+.test-modal {
 	max-width: 95vw;
 	max-height: 95vh;
 	pointer-events: auto;
@@ -95,11 +95,68 @@
 	min-height: 200px;
 }
 
-.aw-modal__content--hide {
+.test-modal__content--hide {
 	display: none;
 }
 
-.aw-modal__content--show {
+.test-modal__content--show {
 	display: flex;
 	flex-direction: column;
+}
+.aw-overlay__container {
+	position: fixed;
+	z-index: 1000;
+	pointer-events: none;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.aw-overlay__source {
+	outline: none;
+	height: auto;
+	width: auto;
+	position: fixed;
+	pointer-events: auto;
+	box-sizing: border-box;
+	z-index: 1000;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.aw-overlay__backdrop-container {
+	position: fixed;
+	z-index: 250;
+	pointer-events: none;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.aw-overlay__backdrop--showing {
+	opacity: 1;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 250;
+	pointer-events: auto;
+	-webkit-tap-highlight-color: transparent;
+	transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.aw-overlay__backdrop--center-position {
+	pointer-events: none;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	position: absolute;
+	z-index: 250;
+	justify-content: center;
+	align-items: center;
 }

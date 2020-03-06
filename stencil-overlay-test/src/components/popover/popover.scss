@@ -1,0 +1,453 @@
+
+
+$popover__background-color: white;
+$popover__text-color: black;
+
+@function str-split($string, $separator) {
+	$split-arr: ();
+	$index: str-index($string, $separator);
+	@while $index != null {
+		$item: str-slice($string, 1, $index - 1);
+		$split-arr: append($split-arr, $item);
+		$string: str-slice($string, $index + 1);
+		$index: str-index($string, $separator);
+	}
+	$split-arr: append($split-arr, $string);
+	@return $split-arr;
+}
+
+@mixin popover-tip-orientation($direction) {
+	@if ($direction== 'bottom') {
+		bottom: 100%;
+	}
+
+	@if ($direction== 'right') {
+		left: 100%;
+	}
+
+	@if ($direction== 'top') {
+		top: 100%;
+	}
+
+	@if ($direction== 'left') {
+		right: 100%;
+	}
+}
+
+@mixin tip-style($direction, $data-point: false) {
+	@extend .aw-popover__container;
+	$list: str-split($direction, ' ');
+	$border-direction: nth($list, 1);
+	$tip-position: nth($list, 2);
+
+	:after,
+	:before {
+		content: '';
+		display: inline-block;
+		position: absolute;
+		@include popover-tip-orientation($border-direction);
+		width: 0;
+		height: 0;
+		border-style: solid;
+	}
+
+	@include tip-border($direction, $data-point);
+
+	:after {
+		@if ($data-point==true) {
+			@include popover-tip-color(
+				grey,
+				$border-direction
+			);
+			border-width: 6px;
+		} @else {
+			@include popover-tip-color(
+				$popover__background-color,
+				$border-direction
+			);
+			border-width: 8px;
+		}
+	}
+
+	:before {
+		@if ($data-point==true) {
+			@include popover-tip-color(transparent, $border-direction);
+			border-width: 6px;
+		} @else {
+			@include popover-tip-color(
+				grey,
+				$border-direction
+			);
+			border-width: 9px;
+		}
+	}
+}
+
+@mixin tip-border($direction, $data-point: false) {
+	@if ($direction== 'top center' or $direction== 'bottom center') {
+		@if ($data-point==true) {
+			:after {
+				left: 30%;
+			}
+
+			:before {
+				left: calc(30% - 1px);
+			}
+		} @else {
+			:after {
+				left: 48%;
+			}
+
+			:before {
+				left: calc(48% - 1px);
+			}
+		}
+	}
+
+	@if ($direction== 'top left' or $direction== 'bottom left') {
+		@if ($data-point==true) {
+			:after {
+				left: 10px;
+			}
+
+			:before {
+				left: 8px;
+			}
+		} @else {
+			:after {
+				left: 17px;
+			}
+
+			:before {
+				left: 16px;
+			}
+		}
+	}
+
+	@if ($direction== 'top right' or $direction== 'bottom right') {
+		@if ($data-point==true) {
+			:after {
+				right: 10px;
+			}
+
+			:before {
+				right: 8px;
+			}
+		} @else {
+			:after {
+				right: 17px;
+			}
+
+			:before {
+				right: 16px;
+			}
+		}
+	}
+
+	@if ($direction== 'right top' or $direction== 'left top') {
+		@if ($data-point==true) {
+			:after {
+				top: 10px;
+			}
+
+			:before {
+				top: 8px;
+			}
+		} @else {
+			:after {
+				top: 17px;
+			}
+
+			:before {
+				top: 16px;
+			}
+		}
+	}
+
+	@if ($direction== 'right center' or $direction== 'left center') {
+		@if ($data-point==true) {
+			:after {
+				top: 30%;
+			}
+
+			:before {
+				top: calc(30% - 1px);
+			}
+		} @else {
+			:after {
+				top: 48%;
+			}
+
+			:before {
+				top: calc(48% - 1px);
+			}
+		}
+	}
+
+	@if ($direction== 'right bottom' or $direction== 'left bottom') {
+		@if ($data-point==true) {
+			:after {
+				bottom: 10px;
+			}
+
+			:before {
+				bottom: 8px;
+			}
+		} @else {
+			:after {
+				bottom: 17px;
+			}
+
+			:before {
+				bottom: 16px;
+			}
+		}
+	}
+}
+
+//responsible for assigning tip fill color
+@mixin popover-tip-color($color, $direction: 'bottom') {
+	@if ($direction== 'bottom') {
+		border-color: transparent transparent $color transparent;
+	}
+
+	@if ($direction== 'right') {
+		border-color: transparent transparent transparent $color;
+	}
+
+	@if ($direction== 'top') {
+		border-color: $color transparent transparent transparent;
+	}
+
+	@if ($direction== 'left') {
+		border-color: transparent $color transparent transparent;
+	}
+}
+
+.aw-popover__container {
+	background-color: $popover__background-color;
+	position: absolute;
+	box-shadow: 0 4px 12px 0 grey;
+	border: 1px solid grey;
+	font-size: 13px;
+	height: auto;
+	width: auto;
+	border-radius: 2px;
+	color: $popover__text-color;
+	pointer-events: auto;
+	box-sizing: border-box;
+	display: flex;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.aw-popover__content {
+	display: flex;
+	flex-direction: column;
+	line-height: 20px;
+}
+
+.aw-popover__container--top-right {
+	@include tip-style('top right');
+}
+
+.aw-popover__container--top-left {
+	@include tip-style('top left');
+}
+
+.aw-popover__container--top-center {
+	@include tip-style('top center');
+}
+
+.aw-popover__container--bottom-center {
+	@include tip-style('bottom center');
+}
+
+.aw-popover__container--bottom-left {
+	@include tip-style('bottom left');
+}
+
+.aw-popover__container--bottom-right {
+	@include tip-style('bottom right');
+}
+
+.aw-popover__container--right-bottom {
+	@include tip-style('right bottom');
+}
+
+.aw-popover__container--right-top {
+	@include tip-style('right top');
+}
+
+.aw-popover__container--right-center {
+	@include tip-style('right center');
+}
+
+.aw-popover__container--left-bottom {
+	@include tip-style('left bottom');
+}
+
+.aw-popover__container--left-top {
+	@include tip-style('left top');
+}
+
+.aw-popover__container--left-center {
+	@include tip-style('left center');
+}
+
+.aw-popover__container__data-point--top-right {
+	@extend .aw-popover__datapoint;
+	@include tip-style('top right', true);
+}
+
+.aw-popover__container__data-point--top-left {
+	@extend .aw-popover__datapoint;
+	@include tip-style('top left', true);
+}
+
+.aw-popover__container__data-point--top-center {
+	@extend .aw-popover__datapoint;
+	@include tip-style('top center', true);
+}
+
+.aw-popover__container__data-point--bottom-center {
+	@extend .aw-popover__datapoint;
+	@include tip-style('bottom center', true);
+}
+
+.aw-popover__container__data-point--bottom-left {
+	@extend .aw-popover__datapoint;
+	@include tip-style('bottom left', true);
+}
+
+.aw-popover__container__data-point--bottom-right {
+	@extend .aw-popover__datapoint;
+	@include tip-style('bottom right', true);
+}
+
+.aw-popover__container__data-point--right-bottom {
+	@extend .aw-popover__datapoint;
+	@include tip-style('right bottom', true);
+}
+
+.aw-popover__container__data-point--right-top {
+	@extend .aw-popover__datapoint;
+	@include tip-style('right top', true);
+}
+
+.aw-popover__container__data-point--right-center {
+	@extend .aw-popover__datapoint;
+	@include tip-style('right center', true);
+}
+
+.aw-popover__container__data-point--left-bottom {
+	@extend .aw-popover__datapoint;
+	@include tip-style('left bottom', true);
+}
+
+.aw-popover__container__data-point--left-top {
+	@extend .aw-popover__datapoint;
+	@include tip-style('left top', true);
+}
+
+.aw-popover__container__data-point--left-center {
+	@extend .aw-popover__datapoint;
+	@include tip-style('left center', true);
+}
+
+.aw-popover__header-container {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 15px 15px 16px;
+}
+
+.aw-popover__header {
+	font-size: 13px;
+	line-height: 15px;
+	font-weight: bold;
+	color: $popover__text-color;
+	width: 100%;
+}
+
+.aw-popover__close-button {
+	padding-left: 8px;
+}
+
+.aw-popover__content__datapoint {
+	@extend .aw-popover__content;
+	line-height: 15px;
+}
+
+.aw-popover__datapoint {
+	padding: 7px;
+	color: black;
+	background-color: grey;
+	border: 1px solid transparent;
+	border-radius: 2px;
+
+	:after {
+		border-width: 6px;
+	}
+
+	:before {
+		border-width: 6px;
+	}
+}
+.aw-overlay__container {
+	position: fixed;
+	z-index: 1000;
+	pointer-events: none;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.aw-overlay__source {
+	outline: none;
+	height: auto;
+	width: auto;
+	position: fixed;
+	pointer-events: auto;
+	box-sizing: border-box;
+	z-index: 1000;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.aw-overlay__backdrop-container {
+	position: fixed;
+	z-index: 250;
+	pointer-events: none;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.aw-overlay__backdrop--showing {
+	opacity: 1;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 250;
+	pointer-events: auto;
+	-webkit-tap-highlight-color: transparent;
+	transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.aw-overlay__backdrop--center-position {
+	pointer-events: none;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	position: absolute;
+	z-index: 250;
+	justify-content: center;
+	align-items: center;
+}

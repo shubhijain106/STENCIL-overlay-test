@@ -9,14 +9,13 @@ import {
 	Prop,
 	Watch,
 } from '@stencil/core';
-import get from 'lodash/get';
 import { AwOverlayCenter } from '../../utils';
 import {
 	TestModalConstants,
 	TestModalType
 } from './model';
 
-const { HEADER,KEYDOWN,CONTENT_HIDE,FOOTER_WITH_LINK,AW_MODAL, CONTENT, CONTENT_SHOW,CONTAINER_ACTION,
+const { HEADER,KEYDOWN,CONTENT_HIDE,FOOTER_WITH_LINK,TEST_MODAL, CONTENT, CONTENT_SHOW,CONTAINER_ACTION,
   CONTAINER_INFORMATION,
   ACTION,
   CONTAINER_LARGE,WRAPPER,BUTTONS,
@@ -157,8 +156,8 @@ export class Modal {
 		if (this._modalElement) {
 			this.host.appendChild<HTMLElement>(this._modalElement);
 			this._modalElement = null;
-   	document.removeEventListener(KEYDOWN, this._escapeKeyHandler);
-			this.modalClosed.emit();
+   	// document.removeEventListener(KEYDOWN, this._escapeKeyHandler);
+			// this.modalClosed.emit();
 		}
   }
 
@@ -170,7 +169,7 @@ export class Modal {
 	private openModal(): void {
 		if (this.isOpen && this._modalElement) {
 			let overlay_modalElement = this._modalElement;
-			overlay_modalElement.classList.add(AW_MODAL);
+			overlay_modalElement.classList.add(TEST_MODAL);
 			this._overlayCenter.open(overlay_modalElement);
 			this.addEventListeners();
 			this.modalOpened.emit();
@@ -178,14 +177,13 @@ export class Modal {
 	}
 	private handleModalRef(el: HTMLElement) {
 		if (el) {
-			this._modalElement = el;
-			const contentEl = get(
-				el.getElementsByClassName(CONTENT),
-				'0.firstElementChild'
-			);
-			if (contentEl) {
-				contentEl.classList.add(CONTENT_SHOW);
-			}
+      this._modalElement = el;
+      let contentEl;
+      if(el.getElementsByClassName(CONTENT).length!=0 && el.getElementsByClassName(CONTENT)[0] && el.getElementsByClassName(CONTENT)[0].firstElementChild){
+        contentEl =
+        el.getElementsByClassName(CONTENT)[0].firstElementChild;
+        contentEl.classList.add(CONTENT_SHOW);
+      }
 		}
 	}
 	private get containerClasses(): string {

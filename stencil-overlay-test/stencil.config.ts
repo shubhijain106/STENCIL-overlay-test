@@ -6,6 +6,7 @@ export const config: Config = {
   plugins: [
     sass()
   ],
+  minifyJs:false,
   outputTargets: [
     {
       type: 'dist',

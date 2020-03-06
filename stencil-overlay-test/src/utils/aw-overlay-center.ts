@@ -1,5 +1,5 @@
 
-import isEmpty from 'lodash/isEmpty';
+
 import { AwPositionConstants } from './position.constants';
 const {
 	BACKDROP_CONTAINER,
@@ -40,7 +40,7 @@ export class AwOverlayCenter {
 		)[0] as HTMLElement;
   }
   public backdropContainerExists(): boolean {
-		return !isEmpty(document.getElementsByClassName(BACKDROP_CONTAINER));
+		return (document.getElementsByClassName(BACKDROP_CONTAINER)).length!= 0;
 	}
 
 	public open(element: HTMLElement): void {
@@ -58,7 +58,7 @@ export class AwOverlayCenter {
 			parentElement.removeChild(element);
 			if (
 				parentElement.className === BACKDROP_CONTAINER &&
-				isEmpty(parentElement.children)
+				parentElement.children.length == 0
 			) {
 				document.body.removeChild(parentElement);
 				parentElement = null;
@@ -82,7 +82,7 @@ export class AwOverlayCenter {
 		return overlayPaneCenter;
 	}
 	public backDropElementExists(): boolean {
-		return !isEmpty(document.getElementsByClassName(BACKDROP_SHOW));
+		return document.getElementsByClassName(BACKDROP_SHOW).length!=0;
 	}
 }
 

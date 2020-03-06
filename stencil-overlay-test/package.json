@@ -22,12 +22,14 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@stencil/core": "1.8.11",
-    "@types/lodash": "^4.14.129"
+    "@stencil/core": "1.7.1",
+    "@types/lodash": "^4.14.149",
+    "lodash": "^4.17.15",
+    "node-sass-chokidar": "^1.4.0"
   },
   "license": "MIT",
   "dependencies": {
-    "@stencil/sass": "^1.1.1",
+    "@stencil/sass": "1.1.0",
     "lodash-es": "4.17.15"
   }
 }
