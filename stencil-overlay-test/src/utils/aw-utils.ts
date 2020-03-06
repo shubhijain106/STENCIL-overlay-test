@@ -83,20 +83,6 @@ export function getSlottedElements(
 	}
 }
 
-/**
- * Function to get Web Component for a given Element
- * @param {HTMLElement} node
- * @returns {HTMLElement}
- */
-export function getAwElement(node: HTMLElement): HTMLElement {
-	if (node) {
-		if (node.tagName.startsWith('AW')) {
-			return node;
-		} else if (node.tagName.startsWith('AUX')) {
-			return node.children[0] as HTMLElement;
-		}
-	}
-}
 
 /**
  * Function that returns event path
