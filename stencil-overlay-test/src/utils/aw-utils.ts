@@ -84,7 +84,7 @@ export function getSlottedElements(
 }
 
 /**
- * Function to get Aladdin Web Component for a given Element
+ * Function to get Web Component for a given Element
  * @param {HTMLElement} node
  * @returns {HTMLElement}
  */
