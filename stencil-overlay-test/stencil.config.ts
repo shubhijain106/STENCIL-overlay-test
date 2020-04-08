@@ -6,6 +6,7 @@ export const config: Config = {
   plugins: [
     sass()
   ],
+  globalStyle: 'src/styles/global-theme-file.scss',
   minifyJs:false,
   outputTargets: [
     {

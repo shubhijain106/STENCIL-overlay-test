@@ -1,19 +1,5 @@
 @import './icon-mixins.scss';
-
-// ICONS,
-$icon__primary: black;
-$icon__hover-press: blue;
-$icon__disabled: grey;
-$icon__secondary: blue;
-$icon__non-action: #a5aab3;
-$icon__primary-button: white;
-$icon__secondary-button:blue;
-$icon__secondary-button--hover: white;
-$icon__boxed-default: #c0c4ca;
-$icon__boxed-hover: #e6ecff;
-$icon__boxed-disabled: #f1f2f4;
-$icon__tertiary-button:blue;
-
+@import '../../styles/global-theme-file.scss';
 
 .icon__container {
 	display: flex;
@@ -24,153 +10,154 @@ $icon__tertiary-button:blue;
 //################################################## account ##############################################
 
 .icon__account--primary {
-	@include icon-color-path($icon__primary, $icon__hover-press);
+	@include icon-color-path(var(--icon__primary), var(--icon__hover-press));
 
 	&.disabled {
-		@include icon-color-path($icon__disabled);
+		@include icon-color-path(var(--icon__disabled));
 	}
 }
 
 .icon__account--secondary {
-	@include icon-color-path($icon__secondary, $icon__hover-press);
+	@include icon-color-path(var(--icon__secondary), var(--icon__hover-press));
 
 	&.disabled {
-		@include icon-color-path($icon__disabled);
+		@include icon-color-path(var(--icon__disabled));
 	}
 }
 
 .icon__account--boxed {
-	@include icon-color-path($icon__primary, $icon__hover-press);
-	background-color: $icon__boxed-default;
+	@include icon-color-path(var(--icon__primary), var(--icon__hover-press));
+	background-color: var(--icon__boxed-default);
 
 	&:hover {
-		background-color: $icon__boxed-hover;
+		background-color: var(--icon__boxed-hover);
 	}
 
 	&:active {
-		background-color: $icon__boxed-hover;
+		background-color: var(--icon__boxed-hover);
 	}
 
 	&.disabled {
-		@include icon-color-path($icon__disabled);
-		background-color: $icon__boxed-disabled;
+		@include icon-color-path(var(--icon__disabled));
+		background-color: var(--icon__boxed-disabled);
 	}
 }
 
 .icon__account--non-action {
-	@include icon-color-path($icon__non-action);
+	@include icon-color-path(var(--icon__non-action));
 
 	&.disabled {
-		@include icon-color-path($icon__disabled);
+		@include icon-color-path(var(--icon__disabled));
 	}
 }
 
 .icon__account--primary-button {
-	@include icon-color-path($icon__primary-button);
+	@include icon-color-path(var(--icon__primary-button));
 
 	&.disabled {
-		@include icon-color-path($icon__disabled);
+		@include icon-color-path(var(--icon__disabled));
 	}
 }
 
 .icon__account--secondary-button {
-	@include icon-color-path($icon__secondary-button);
+	@include icon-color-path(var(--icon__secondary-button));
 
 	&.disabled {
-		@include icon-color-path($icon__disabled);
+		@include icon-color-path(var(--icon__disabled));
 	}
 }
 
 .icon__account--secondary-button-hover {
-	@include icon-color-path($icon__secondary-button--hover);
+	@include icon-color-path(var(--icon__secondary-button--hover));
+
 	&.disabled {
-		@include icon-color-path($icon__disabled);
+		@include icon-color-path(var(--icon__disabled));
 	}
 }
 
 .icon__account--tertiary-button {
-	@include icon-color-path($icon__tertiary-button);
+	@include icon-color-path(var(--icon__tertiary-button));
 
 	&.disabled {
-		@include icon-color-path($icon__disabled);
+		@include icon-color-path(var(--icon__disabled));
 	}
 }
 
 //################################################## action ########################################################
 
 .icon__action--primary {
-	@include icon-color-circle($icon__primary, $icon__hover-press);
+	@include icon-color-circle(var(--icon__primary), var(--icon__hover-press));
 
 	&.disabled {
-		@include icon-color-circle($icon__disabled);
+		@include icon-color-circle(var(--icon__disabled));
 	}
 }
 
 .icon__action--secondary {
 	@include icon-color-circle(
-		$icon__secondary,
-		$icon__hover-press
+		var(--icon__secondary),
+		var(--icon__hover-press)
 	);
 
 	&.disabled {
-		@include icon-color-circle($icon__disabled);
+		@include icon-color-circle(var(--icon__disabled));
 	}
 }
 
 .icon__action--boxed {
-	@include icon-color-circle($icon__primary, $icon__hover-press);
-	background-color: $icon__boxed-default;
+	@include icon-color-circle(var(--icon__primary), var(--icon__hover-press));
+	background-color: var(--icon__boxed-default);
 
 	&:hover {
-		background-color: $icon__boxed-hover;
+		background-color: var(--icon__boxed-hover);
 	}
 
 	&:active {
-		background-color: $icon__boxed-hover;
+		background-color: var(--icon__boxed-hover);
 	}
 
 	&.disabled {
-		@include icon-color-circle($icon__disabled);
-		background-color: $icon__boxed-disabled;
+		@include icon-color-circle(var(--icon__disabled));
+		background-color: var(--icon__boxed-disabled);
 	}
 }
 
 .icon__action--non-action {
-	@include icon-color-circle($icon__non-action);
+	@include icon-color-circle(var(--icon__non-action));
 
 	&.disabled {
-		@include icon-color-circle($icon__disabled);
+		@include icon-color-circle(var(--icon__disabled));
 	}
 }
 
 .icon__action--primary-button {
-	@include icon-color-circle($icon__primary-button);
+	@include icon-color-circle(var(--icon__primary-button));
 
 	&.disabled {
-		@include icon-color-circle($icon__disabled);
+		@include icon-color-circle(var(--icon__disabled));
 	}
 }
 
 .icon__action--secondary-button {
-	@include icon-color-circle($icon__secondary-button);
+	@include icon-color-circle(var(--icon__secondary-button));
 
 	&.disabled {
-		@include icon-color-circle($icon__disabled);
+		@include icon-color-circle(var(--icon__disabled));
 	}
 }
 
 .icon__action--secondary-button-hover {
-	@include icon-color-circle($icon__secondary-button--hover);
+	@include icon-color-circle(var(--icon__secondary-button--hover));
 
 	&.disabled {
-		@include icon-color-circle($icon__disabled);
+		@include icon-color-circle(var(--icon__disabled));
 	}
 }
 
 .icon__action--tertiary-button {
-	@include icon-color-circle($icon__tertiary-button);
+	@include icon-color-circle(var(--icon__tertiary-button));
 
 	&.disabled {
-		@include icon-color-circle($icon__disabled);
+		@include icon-color-circle(var(--icon__disabled));
 	}
 }

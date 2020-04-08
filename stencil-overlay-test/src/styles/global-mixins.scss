@@ -1,0 +1,37 @@
+@function get-value(
+	$varName,
+	$map-name,
+	$default-theme: (),
+	$current-theme: ()
+) {
+	$current-component-map: map-get($current-theme, $map-name);
+  $default-component-map: map-get($default-theme, $map-name);
+
+	@if (
+		$default-component-map
+			!=null and
+			$current-component-map
+			!=null and
+			map-get($current-component-map, #{$varName})
+			==null
+	) {
+		@return #{map-get($default-component-map, #{$varName})};
+	} @else if($current-component-map !=null) {
+		@return #{map-get($current-component-map, #{$varName})};
+	} @else if($default-component-map !=null) {
+		@return #{map-get($default-component-map, #{$varName})};
+	}
+
+	@return null;
+}
+@mixin css-variables($varName, $map-name, $default-theme, $theme) {
+	--#{$varName}: #{get-value($varName, $map-name, $default-theme, $theme)};
+}
+@mixin custom-components-theme(
+	$default-theme: $theme-light,
+	$current-theme: ()
+) {
+	@each $key, $value in map-get($default-theme, default) {
+		@include css-variables($key, default, $default-theme, $current-theme);
+	}
+}

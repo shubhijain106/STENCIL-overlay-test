@@ -1,28 +1,58 @@
+@import './global-colors.scss';
+@import './global-mixins.scss';
+
+
 $light: (
 	primary-text__color: map-get($grey, 95),
 	secondary-text__color: map-get($grey, 60),
-	disabled-text__color: map-get($grey, 40),
+  disabled-text__color: map-get($grey, 40),
+  // ICONS,
+	icon__primary: map-get($grey, 95),
+	icon__hover-press: map-get($action, 60),
+	icon__toggle-hover: map-get($action, 60),
+	icon__disabled: map-get($grey, 30),
+	icon__secondary: map-get($grey, 60),
+	icon__non-action: map-get($grey, 40),
+	icon__primary-button: map-get($white, 00),
+	icon__secondary-button: map-get($action, 60),
+	icon__secondary-button--hover: map-get($white, 00),
+	icon__boxed-default: map-get($grey, 10),
+	icon__boxed-hover: map-get($action, 20),
+	icon__boxed-disabled: map-get($grey, 10),
+	icon__tertiary-button: map-get($action, 60),
 );
 
 $dark: (
 	primary-text__color: map-get($white, 00),
 	secondary-text__color: map-get($grey, 40),
-	disabled-text__color: map-get($grey, 60),
+  disabled-text__color: map-get($grey, 60),
+  // ICONS,
+	icon__primary: map-get($white, 00),
+	icon__hover-press: map-get($action, 50),
+	icon__toggle-hover: map-get($grey, 95),
+	icon__disabled: map-get($grey, 70),
+	icon__secondary: map-get($grey, 40),
+	icon__non-action: map-get($grey, 60),
+	icon__primary-button: map-get($grey, 95),
+	icon__secondary-button: map-get($action, 50),
+	icon__secondary-button--hover: map-get($grey, 95),
+	icon__boxed-default: map-get($grey, 70),
+	icon__boxed-hover: map-get($action, 50),
+	icon__boxed-disabled: map-get($grey, 80),
+	icon__tertiary-button: map-get($action, 50),
+);
+$theme-light: (
+  default: $light,
+);
+$theme-dark: (
+  default: $dark,
 );
 
-@mixin custom-components-theme(
-	$default-theme: $light,
-	$current-theme: ()
-) {
-	@each $key, $value in map-get($default-theme, default) {
-		@include css-variables($key, default, $default-theme, $current-theme);
-	}
-}
-
 .theme-light {
-	@include custom-components-theme($light, ());
+	@include custom-components-theme($theme-light, ());
 }
 
 .theme-dark {
-	@include custom-components-theme($dark, ());
+	@include custom-components-theme($theme-dark, ());
 }
+
