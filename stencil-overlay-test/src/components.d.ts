@@ -7,10 +7,34 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
+  IconStateType,
+  IconType,
+} from './components/icon/model';
+import {
   TestModalType,
 } from './components/test-modal/model';
 
 export namespace Components {
+  interface TestIcon {
+    /**
+    * Determines if icon is disabled
+    * @type {boolean}
+    * @default false
+    */
+    'isDisabled'?: boolean;
+    /**
+    * Determines state of icon e.g. primary
+    * @type {IconStateType}
+    * @default 'non-action'
+    */
+    'state'?: IconStateType;
+    /**
+    * Determines type of icon e.g. settings
+    * @type {IconType}
+    * @default undefined
+    */
+    'type': IconType;
+  }
   interface TestModal {
     /**
     * This method allows for the closing of modal
@@ -133,6 +157,12 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLTestIconElement extends Components.TestIcon, HTMLStencilElement {}
+  var HTMLTestIconElement: {
+    prototype: HTMLTestIconElement;
+    new (): HTMLTestIconElement;
+  };
+
   interface HTMLTestModalElement extends Components.TestModal, HTMLStencilElement {}
   var HTMLTestModalElement: {
     prototype: HTMLTestModalElement;
@@ -145,12 +175,33 @@ declare global {
     new (): HTMLTestPopoverElement;
   };
   interface HTMLElementTagNameMap {
+    'test-icon': HTMLTestIconElement;
     'test-modal': HTMLTestModalElement;
     'test-popover': HTMLTestPopoverElement;
   }
 }
 
 declare namespace LocalJSX {
+  interface TestIcon {
+    /**
+    * Determines if icon is disabled
+    * @type {boolean}
+    * @default false
+    */
+    'isDisabled'?: boolean;
+    /**
+    * Determines state of icon e.g. primary
+    * @type {IconStateType}
+    * @default 'non-action'
+    */
+    'state'?: IconStateType;
+    /**
+    * Determines type of icon e.g. settings
+    * @type {IconType}
+    * @default undefined
+    */
+    'type'?: IconType;
+  }
   interface TestModal {
     /**
     * When true, It would override existing footer with the custom footer
@@ -263,6 +314,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'test-icon': TestIcon;
     'test-modal': TestModal;
     'test-popover': TestPopover;
   }
@@ -274,6 +326,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'test-icon': LocalJSX.TestIcon & JSXBase.HTMLAttributes<HTMLTestIconElement>;
       'test-modal': LocalJSX.TestModal & JSXBase.HTMLAttributes<HTMLTestModalElement>;
       'test-popover': LocalJSX.TestPopover & JSXBase.HTMLAttributes<HTMLTestPopoverElement>;
     }

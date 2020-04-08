@@ -1,0 +1,25 @@
+// roboto-regular - latin
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: local('Roboto'), local('Roboto-Regular'),
+		url('/assets/fonts/roboto-v19-latin-regular.woff2') format('woff2'),
+		// Super Modern Browsers
+			url('/assets/fonts/roboto-v19-latin-regular.woff') format('woff'),
+		// Modern Browsers
+			url('/assets/fonts/roboto-v19-latin-regular.ttf') format(
+				'truetype'
+			),
+		// Safari, Android, iOS
+			url('/assets/fonts/roboto-v19-latin-regular.svg#Roboto')
+			format('svg'),
+		// Legacy iOS
+			url('/assets/fonts/roboto-v19-latin-regular.eot')
+			format('embedded-opentype'),
+		// IE9 Compat Modes
+			url('/assets/fonts/roboto-v19-latin-regular.eot?#iefix')
+			format('embedded-opentype');
+	// IE6-IE8
+}

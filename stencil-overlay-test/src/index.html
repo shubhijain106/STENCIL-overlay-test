@@ -7,9 +7,34 @@
 
   <script type="module" src="/build/stencil-overlay-test.esm.js"></script>
   <script nomodule src="/build/stencil-overlay-test.js"></script>
-
+  <style>
+    .icon-style{
+      display:flex;
+      justify-content:space-between;
+      width: 600px;
+      padding-bottom: 50px;
+      padding-top: 50px;
+    }
+  </style>
 </head>
-<body>
+<body class="theme-light">
+
+  <button onclick="switchTheme()">Switch Theme</button>
+  <!--------------------ICON START --------------------->
+  <div class="icon-style">
+    <test-icon type="action" state="primary"></test-icon>
+    <test-icon type="action" state="secondary"></test-icon>
+    <test-icon type="action" state="boxed"></test-icon>
+
+    <test-icon type="account" state="primary"></test-icon>
+    <test-icon type="account" state="secondary"></test-icon>
+    <test-icon type="account" state="boxed"></test-icon>
+    <test-icon type="account" state="non-action"></test-icon>
+    <test-icon type="account" state="secondary-button-hover"></test-icon>
+  </div>
+  <!--------------------ICON END --------------------->
+
+
   <!--------------------MODAL START --------------------->
   <button
     id="button"
@@ -82,6 +107,10 @@
   var modalEl = document.querySelector('test-modal');
   console.log(modalEl);
 
+  function switchTheme(){
+    var bodyEl = document.querySelector('body');
+    bodyEl.className === 'theme-dark'? bodyEl.className = 'theme-light':bodyEl.className = 'theme-dark';
+  }
   function modalOpened(){
     console.log('im open');
   }

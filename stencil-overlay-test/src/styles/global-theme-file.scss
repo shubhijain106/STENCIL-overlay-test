@@ -1,0 +1,28 @@
+$light: (
+	primary-text__color: map-get($grey, 95),
+	secondary-text__color: map-get($grey, 60),
+	disabled-text__color: map-get($grey, 40),
+);
+
+$dark: (
+	primary-text__color: map-get($white, 00),
+	secondary-text__color: map-get($grey, 40),
+	disabled-text__color: map-get($grey, 60),
+);
+
+@mixin custom-components-theme(
+	$default-theme: $light,
+	$current-theme: ()
+) {
+	@each $key, $value in map-get($default-theme, default) {
+		@include css-variables($key, default, $default-theme, $current-theme);
+	}
+}
+
+.theme-light {
+	@include custom-components-theme($light, ());
+}
+
+.theme-dark {
+	@include custom-components-theme($dark, ());
+}
